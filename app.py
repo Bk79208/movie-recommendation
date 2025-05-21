@@ -2,20 +2,17 @@ import pickle
 import streamlit as st
 import requests
 import random
+from dotenv import load_dotenv
+import os
 
-# def fetch_poster(movie_id):
-#     url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
-#     data = requests.get(url)
-#     data = data.json()
-#     poster_path = data['poster_path']
-#     full_path = "https://image.tmdb.org/t/p/w500/" + poster_path
-#     return full_path
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
 error_shown = False
 def fetch_poster(movie_id):
     global error_shown
     try:
-        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}"
         data = requests.get(url)
         data.raise_for_status()  # Raise HTTPError for bad responses (4xx and 5xx)
         data = data.json()
