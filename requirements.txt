@@ -1,0 +1,8 @@
+streamlit
+pickle
+pandas
+numpy
+nltk
+sklearn
+random
+request
